@@ -54,6 +54,7 @@ class FindEmployee extends Component {
     if (employeeByOrgResponse && employeeByOrgResponse.data) {
       this.orgs = employeeByOrgResponse
       if (compareObjects(items, employeeByOrgResponse.data)) {
+        employeeByOrgResponse.data.splice(-1,1)
         this.setState({
           resultJson: employeeByOrgResponse.data,
           items: employeeByOrgResponse.data,
