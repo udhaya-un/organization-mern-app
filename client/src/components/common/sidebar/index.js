@@ -39,12 +39,22 @@ const Sidebar = props => {
   };
 
   const menuItem = data => {
-    return (
-      <Menu.Item key={data.key}>
-        <Icon type={data.type} />
-        <span className="nav-text">{data.name}</span>
-      </Menu.Item>
-    );
+    if(data.key === "employees"){
+      return (
+        <Menu.Item disabled={true} key={data.key}>
+          <Icon type={data.type} />
+          <span className="nav-text">{data.name}</span>
+        </Menu.Item>
+      );
+    }else{
+      return (
+        <Menu.Item key={data.key}>
+          <Icon type={data.type} />
+          <span className="nav-text">{data.name}</span>
+        </Menu.Item>
+      );
+    }
+   
   };
   const defaultSelectedKeys = [props.location.pathname.slice(1)];
   return (
