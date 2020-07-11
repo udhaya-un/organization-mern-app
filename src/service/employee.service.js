@@ -28,10 +28,6 @@ exports.getAllEmployeeByOrg = async (id, sort_value) => {
   if (!employees) {
     return response.error();
   }
-  org = {
-    count: employees.length
-  }
-  employees.push(org)
   return response.success(employees);
 };
 

@@ -54,7 +54,6 @@ class FindEmployee extends Component {
     if (employeeByOrgResponse && employeeByOrgResponse.data) {
       this.orgs = employeeByOrgResponse
       if (compareObjects(items, employeeByOrgResponse.data)) {
-        employeeByOrgResponse.data.splice(-1,1)
         this.setState({
           resultJson: employeeByOrgResponse.data,
           items: employeeByOrgResponse.data,
@@ -113,7 +112,6 @@ class FindEmployee extends Component {
   handleChange = (event) => {
     const { value } = event.target;
     const { items } = this.state;
-    items.splice(-1,1)
     const resultJson = items.filter((item) => {
       console.log(item)
       return (

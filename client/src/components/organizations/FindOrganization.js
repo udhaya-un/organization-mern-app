@@ -184,7 +184,9 @@ class Find extends Component {
         key: 'employee',
         render: (text, record) => {
           return (
-            <Icon className="info-icon" onClick={() => this.getorg(record)} type="info-circle" />
+            <a onClick={() => this.getorg(record)}>
+              {record.emp_count}
+            </a>
           );
         }
       }

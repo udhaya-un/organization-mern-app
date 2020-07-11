@@ -16,11 +16,19 @@ exports.getAllOrganization = async () => {
   if (!resut) {
     return response.error();
   }
-  return response.success(resut);
+  let results =  resut.map(async res => {
+    let resStringify  = JSON.stringify(res)
+    let resParse= JSON.parse(resStringify)
+    let emps = await empolyee_service.getAllEmployeeByOrg(res._id)
+    resParse.emp_count = emps.data.length
+    return resParse
+  })
+  let final_res = await Promise.all(results)
+  return response.success(final_res);
 };
 
 exports.getOrganization = async (id) => {
-  let resut = await baseDao.findOne(organization, params={_id:id});
+  let resut = await baseDao.findOne(organization, params = { _id: id });
   if (!resut) {
     return response.error();
   }
